@@ -5,6 +5,7 @@
 #include "Parser.h"
 #include "GeneralScheduler.h"
 
+
 void print_statistics(const std::string& type,
                      const double turnaround,
                      const double wait,
@@ -16,22 +17,23 @@ void print_statistics(const std::string& type,
     std::printf("\n");
 }
 
+template <class Compare>
+void run_scheduler(const char* file_path, const std::string& type) {
+    auto s = GeneralScheduler<Compare>(parse(file_path));
+    s.run();
+    print_statistics(type,
+        s.average_turnaround(),
+        s.average_wait(),
+        s.average_throughput());
+}
+
 int main(const int argc, char* argv[]) {
     if (argc != 2) {
         std::cerr << "ERROR: invalid number of arguments" << std::endl;
         return 1;
     }
 
-    auto fcfs = GeneralScheduler<ArrivesFirst>(parse(argv[1]));
-    fcfs.run();
-    print_statistics("FCFS", fcfs.average_turnaround(), fcfs.average_wait(), fcfs.average_throughput());
-
-    auto sjf = GeneralScheduler<ShortestFirst>(parse(argv[1]));
-    sjf.run();
-    print_statistics("SJFP", sjf.average_turnaround(), sjf.average_wait(), sjf.average_throughput());
-
-    auto priority = GeneralScheduler<PriorityFirst>(parse(argv[1]));
-    priority.run();
-    print_statistics("Priority", priority.average_turnaround(), priority.average_wait(), priority.average_throughput());
-
+    run_scheduler<ArrivesFirst>(argv[1], "FCFS");
+    run_scheduler<ShortestFirst>(argv[1], "SJFP");
+    run_scheduler<PriorityFirst>(argv[1], "Priority");
 }
