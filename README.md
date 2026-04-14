@@ -14,6 +14,6 @@
 ```
 
 # How to Run Project
-Begin by running `$ make all`, which will compile all necessary files into `/build/` and `/bin/`. 
-Then run `$ bin/Scheduler <csv-file>` to activate the scheduler, with path to csv file provided.
+Begin by running `$ make all`, which will compile all necessary files into `/build/`. 
+Then run `$ ./Scheduler <csv-file>` to activate the scheduler, with path to csv file provided.
 The project can be cleaned by running `$ make clean`.

@@ -1,11 +1,11 @@
-# Makefile kindly taken from https://gist.github.com/zobayer1/7265c698d1b024bb7723bc624aeedeb3
+# Makefile kindly modified from https://gist.github.com/zobayer1/7265c698d1b024bb7723bc624aeedeb3
 
 # Pre-compiler and Compiler flags
 CXX_FLAGS := -Wall -Wextra -Wpedantic -Werror -Wfatal-errors -Winit-self -Wshadow -Wlogical-op -Wcomment -Wctor-dtor-privacy -Wold-style-cast -D_GLIBCXX_DEBUG -fno-diagnostics-show-option
 PRE_FLAGS := -MMD -MP
 
 # Project directory structure
-BIN := bin
+BIN :=
 SRC := src
 LIB := lib
 INC := include
@@ -53,7 +53,7 @@ $(BUILD)/%.o: $(SRC)/%.cpp
 .PHONY: clean
 clean:
 	rm -rf build
-	rm -rf bin
+	rm -rf $(TARGET)
 
 # Include all dependencies
 -include $(DEPS)
