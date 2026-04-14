@@ -54,6 +54,11 @@ $(BUILD)/%.o: $(SRC)/%.cpp
 clean:
 	rm -rf build
 	rm -rf bin
+	rm -rf *.zip
 
 # Include all dependencies
 -include $(DEPS)
+
+# Create zip
+package:
+	zip Grimm-Ryan-HW5.zip README.txt Makefile $(SRC)/*
