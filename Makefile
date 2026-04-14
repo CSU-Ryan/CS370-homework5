@@ -5,7 +5,7 @@ CXX_FLAGS := -Wall -Wextra -Wpedantic -Werror -Wfatal-errors -Winit-self -Wshado
 PRE_FLAGS := -MMD -MP
 
 # Project directory structure
-BIN :=
+BIN := .
 SRC := src
 LIB := lib
 INC := include
