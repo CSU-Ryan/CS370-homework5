@@ -51,6 +51,20 @@ public:
         timer = upcoming_processes.top()->arrival_time - 1;
     }
 
+    ~GeneralScheduler() {
+        while (!upcoming_processes.empty()) {
+            delete upcoming_processes.top();
+            upcoming_processes.pop();
+        };
+
+        while (!ready_queue.empty()) {
+            delete ready_queue.top();
+            ready_queue.pop();
+        };
+
+        for (const auto& process : complete_processes) delete process;
+    }
+
     void run() {
         while (!upcoming_processes.empty() || !ready_queue.empty()) {
             queue_ready_processes();
