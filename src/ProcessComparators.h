@@ -1,3 +1,7 @@
+//
+// Collection of classes with comparators. Used to sort priority queues.
+//
+
 #ifndef HW5_PROCESSCOMPARATORS_H
 #define HW5_PROCESSCOMPARATORS_H
 

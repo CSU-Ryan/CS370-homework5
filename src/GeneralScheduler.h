@@ -24,6 +24,9 @@ class GeneralScheduler {
     std::vector<process*> complete_processes;
 
 
+    /**
+     * Moves any processes in the upcoming queue to the ready queue if their arrival time has passed.
+     */
     void queue_ready_processes() {
         while (!upcoming_processes.empty() && upcoming_processes.top()->arrival_time <= timer) {
             ready_queue.push(upcoming_processes.top());
@@ -31,6 +34,10 @@ class GeneralScheduler {
         }
     }
 
+    /**
+     * Runs the next process for one tick.
+     * If a process completes in this tick, it is moved to the completed process list.
+     */
     void run_next_process() {
         if (ready_queue.empty()) return;
 

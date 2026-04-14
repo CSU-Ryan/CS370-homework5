@@ -6,6 +6,10 @@
 #include "Process.h"
 
 
+/**
+ * Creates vector of processes 
+ * @return
+ */
 std::vector<process*> parse(const std::string&);
 
 

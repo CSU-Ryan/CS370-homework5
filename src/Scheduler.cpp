@@ -27,6 +27,9 @@ void run_scheduler(const char* file_path, const std::string& type) {
         s.average_throughput());
 }
 
+/**
+ * Only argument passed should be path to csv file
+ */
 int main(const int argc, char* argv[]) {
     if (argc != 2) {
         std::cerr << "ERROR: invalid number of arguments" << std::endl;

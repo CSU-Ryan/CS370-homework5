@@ -13,6 +13,10 @@ struct process {
     [[nodiscard]]
     bool is_complete() const;
 
+    /**
+     * Constructs process from string of comma-separated values.
+     * @param ss stringstream of line in csv
+     */
     explicit process(std::stringstream ss);
 
     [[nodiscard]] int turnaround_length() const;
