@@ -61,4 +61,4 @@ clean:
 
 # Create zip
 package:
-	zip Grimm-Ryan-HW5.zip README.txt Makefile $(SRC)/*
+	zip Grimm-Ryan-HW5.zip README.md Makefile $(SRC)/*
