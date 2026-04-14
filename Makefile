@@ -1,5 +1,7 @@
+# Makefile kindly taken from https://gist.github.com/zobayer1/7265c698d1b024bb7723bc624aeedeb3
+
 # Pre-compiler and Compiler flags
-CXX_FLAGS := -Wall -Wextra -std=c++17 -ggdb
+CXX_FLAGS := -Wall -Wextra -Wpedantic -Werror -Wfatal-errors -Winit-self -Wshadow -Wlogical-op -Wcomment -Wctor-dtor-privacy -Wold-style-cast -D_GLIBCXX_DEBUG -fno-diagnostics-show-option
 PRE_FLAGS := -MMD -MP
 
 # Project directory structure
@@ -29,7 +31,6 @@ DEPS := $(OBJS:.o=.d)
 
 # Run task
 run: build
-	@echo "🚀 Executing..."
 	./$(TARGET) $(ARGS)
 
 # Build task
@@ -40,7 +41,6 @@ all: $(TARGET)
 
 # Task producing target from built files
 $(TARGET): $(OBJS)
-	@echo "🚧 Building..."
 	mkdir -p $(dir $@)
 	$(CXX) $(OBJS) -o $@ $(LDPATHS) $(LDFLAGS)
 
@@ -52,8 +52,8 @@ $(BUILD)/%.o: $(SRC)/%.cpp
 # Clean task
 .PHONY: clean
 clean:
-	@echo "🧹 Clearing..."
 	rm -rf build
+	rm -rf bin
 
 # Include all dependencies
 -include $(DEPS)
