@@ -13,4 +13,4 @@ clean:
 	rm -f Scheduler *.o *.zip
 
 package:
-	zip Grimm-Ryan-HW5.zip README.md Makefile src
+	zip Grimm-Ryan-HW5.zip README.md Makefile src/*
